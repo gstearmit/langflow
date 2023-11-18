@@ -1,0 +1,111 @@
+#----danh sach lenh chay -------
+git clone https://github.com/logspace-ai/langflow.git
+cd langflow
+docker-compose up --build
+
+following address: http://localhost:3000/
+
+docker-compose down
+
+
+--- fixed login http://localhost:3000/
+https://www.linkedin.com/pulse/langflow-docker-user-credentials-oyasi-zaki-ananta/
+
+run : langflow superuser --username=admin --password=admin@12345678
+
+#--- login user normal
+http://localhost:80
+jack / PYxKR6xRLv@st
+
+
+#------run fore ALL UP----------
+cd D:\LangChain\langflow\deploy
+
+D:\LangChain\langflow\deploy>docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+
+# --DOWN --
+D:\LangChain\langflow\deploy>docker-compose -f docker-compose.yml -f docker-compose.override.yml down
+
+
+# Testing : https://docs.langflow.org/guides/async-tasks
+To run the tests for the Async API, you can run the following command:
+docker compose -f docker-compose.with_tests.yml up --exit-code-from tests tests result_backend broker celeryworker db --build
+
+
+
+#--- ACCESS ---
+1.prometheus
+http://localhost/metrics
+
+http://localhost:9090/graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h
+
+2. grafana
+admin / admin!@123
+http://localhost/grafana
+http://localhost:3030/dashboard/new?orgId=1
+
+# Lenh Khoi phuc mat khau
+>grafana-cli admin reset-admin-password admin
+
+	#--- https://stackoverflow.com/questions/54039604/what-is-the-default-username-and-password-for-grafana-login-page
+	grafana 7.3.5
+
+	admin:prom-operator
+
+	admin:password
+
+	root:admin
+
+	root:password
+
+	administrator:admin
+
+	grafana 9.4
+
+	admin:admin
+
+
+	Check your Docker Compose for this:
+
+	environment:
+	  - GF_SECURITY_ADMIN_PASSWORD={{YOUR-PASS-WILL-BE-HERE}}
+
+3. pgadmin
+
+  http://pgadmin.localhost/
+
+4. flower : http://localhost:5555/
+5.db : 127.0.0.1 port 5532
+
+--------dang ki---------------
+https://smith.langchain.com/
+gstearmit
+
+
+#---- Tracing with LangSmith
+Assuming we've set our environment variables as shown in the beginning, all of the model and chain calls we've been making will have been automatically logged to LangSmith. Once there, we can use LangSmith to debug and annotate our application traces, then turn them into datasets for evaluating future iterations of the application.
+
+Check out what the trace for the above chain would look like: https://smith.langchain.com/public/09370280-4330-4eb4-a7e8-c91817f6aa13/r
+
+For more on LangSmith head here.
+
+#  check out the LangSmith Cookbook.
+
+
+# Docker
+Đoạn mã sau sẽ chạy phần phụ trợ và giao diện người dùng trong các vùng chứa riêng biệt. Giao diện người dùng sẽ có sẵn tại localhost:3000và phần phụ trợ tại localhost:7860.
+
+docker compose up --build
+# or
+make dev build=1
+
+Tài liệu được xây dựng bằng Docusaurus . Để chạy tài liệu cục bộ, hãy chạy các lệnh sau:
+
+cd docs
+npm install
+npm run start
+
+Tài liệu sẽ có sẵn tại localhost:3000và tất cả các tệp đều nằm trong docs/docsthư mục. Khi bạn đã thực hiện xong các thay đổi của mình, bạn có thể tạo Yêu cầu kéo tới mainnhánh.
